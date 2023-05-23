@@ -1,0 +1,119 @@
+:root{
+    --background: #2b3034;
+    --fontColor: #e9fcff;
+    --accentColor: #e5bbcd;
+    --secAccentColor: #b89eb4;
+    --secBackground:#454b54;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background);
+    color: var(--fontColor);
+    font-family: 'Mukta', sans-serif;    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 3fr 1fr;
+    height: 100vh;
+}
+
+.container{
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 4fr 1fr;
+    margin: 0 auto;
+}
+.container h1{
+    font-size: 35px;
+}
+.container h1 span{
+    color: var(--accentColor);
+}
+.imgContainer{
+    background-color: var(--secBackground);
+    border-radius:10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: .5fr 5fr .5fr;
+}
+.imgContainer #meme_footer{
+    margin-top: 20px;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.imgContainer img{
+    margin: 0 auto;
+    width: 80%;
+    min-width: 70%;
+}
+.imgContainer h2{
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid var(--secAccentColor);
+}
+.asideInfo{
+    background-color: royalblue;
+}
+#meme_footer span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+}
+.span-column{
+    grid-column: span 2;
+}
+.span-rows{
+    grid-row: span 2;
+}
+.btn-container{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-container .btn{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    background-color: var(--accentColor);
+    color: var(--background);
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: all .2s ease;
+}
+.btn-container .btn:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+a{
+    color: var(--fontColor);
+    cursor: pointer;
+    transition: .3s ease;
+}
+a:hover{
+    color: var(--secAccentColor);
+}
+@media (max-width:450px){
+    #meme_footer span{
+        font-size: 12px;
+    }
+    svg{
+        width: 12px;
+        height: 12px;
+    }
+}
