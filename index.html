@@ -12,7 +12,7 @@
 </head>
 <body>
     <section class="container">
-        <h1 class="span-column"><span>red</span>meme</h1>
+        <span class="span-column"><span>red</span>meme</span>
         <section class="imgContainer span-column">
             <h2 id="meme_title"></h2>
             <img id="meme" src="...">
@@ -20,12 +20,19 @@
                 <span id="author"></span>
                 <span id="subreddit"></span>
                 <span id="likes"></span>
-                <a id="url" href="..." target="_blank">Link</a>
+                <span><a id="url" href="..." target="_blank">Link</a></span>
             </div>
+
+            <section class="btn-container">
+                <div class="btn" id="randomMemeBtn">
+                    Click for memes!
+                    <span class="tooltipText">Or press space</span>
+                </div>
+                <!-- <a id="saveBtn" class="btn" download="meme">Save</a> -->
+            </section>
         </section>
-        <section class="btn-container">
-            <div class="btn" id="btn">Randomize</div>
-        </section>
+
+
     </section>
 </body>
 <script src="./JS/main.js"></script>

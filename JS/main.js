@@ -1,4 +1,5 @@
-const randomMemeBTN = document.querySelector('#btn');
+const randomMemeBTN = document.querySelector('#randomMemeBtn');
+const saveMemeBTN = document.querySelector('#saveBtn')
 
 const imgContainer = document.querySelector('.imgContainer');
 
@@ -10,14 +11,19 @@ const subredditSpan = document.querySelector('#subreddit');
 const likesSpan = document.querySelector('#likes');
 const memeLink = document.querySelector('#url');
 
+
+
 function fetchMemes(){
     fetch(`https://meme-api.com/gimme`)
     .then((res)=>res.json())
     .then((data)=>displayMeme(data));
 }
+
+
 function displayMeme(data){
 
     memeImgContainer.src = data.url;
+    // saveMemeBTN.setAttribute('href', data.url)
     memeTitleContainer.textContent = data.title;
     authorSpan.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/></svg> ' + data.author;
     subredditSpan.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-broadcast" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg> '+ data.subreddit;
@@ -31,3 +37,8 @@ randomMemeBTN.addEventListener('click', function(){
     fetchMemes()
 })
 window.onload = fetchMemes();
+document.body.onkeyup = function(e){
+    if(e.key==" "||e.code=="Space"||e.keyCode==32){
+        fetchMemes()
+    }
+}

@@ -1,9 +1,21 @@
 :root{
-    --background: #2b3034;
-    --fontColor: #e9fcff;
-    --accentColor: #e5bbcd;
-    --secAccentColor: #b89eb4;
-    --secBackground:#454b54;
+    --text: #dce4f5;
+    --background: #080e1b;
+    --primary: #97b0e1;
+    --secondary: #5c2685;
+    --accent: #bb5acf;
+    --backgroundSec: #0a1120;
+}
+/* :root{
+    --text: #e2e0fe;
+    --background: #0b0909;
+    --primary: #7570fc;
+    --secondary: #ae0430;
+    --accent: #fa692b;
+    --backgroundSec: #131111;
+} */
+body,html{
+    overflow: hidden;
 }
 
 body{
@@ -11,7 +23,7 @@ body{
     padding: 0;
     box-sizing: border-box;
     background-color: var(--background);
-    color: var(--fontColor);
+    color: var(--text);
     font-family: 'Mukta', sans-serif;    
     display: grid;
     grid-template-columns: 1fr;
@@ -20,42 +32,60 @@ body{
 }
 
 .container{
-    height: 90%;
-    width: 90%;
+    height: 90vh;
+    width: 100%;
     text-align: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: .5fr 4fr 1fr;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
-.container h1{
+span{
     font-size: 35px;
+    margin: 0 auto;
+    /* margin-top: -100px; */
+    font-weight: bold;
 }
-.container h1 span{
-    color: var(--accentColor);
+span span{
+    color: var(--accent);
 }
 .imgContainer{
-    background-color: var(--secBackground);
+    width: 750px;
+    max-height: 80%;
+    /* background-color: var(--accent); */
     border-radius:10px;
     padding: 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-content: center;
-    grid-template-rows: .5fr 5fr .5fr;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.imgContainer #meme_title{
+    background-color: var(--backgroundSec);
+    width: 100%;
+    border-radius: 10px;
 }
 .imgContainer #meme_footer{
-    margin-top: 20px;
-    height: 15%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background-color: var(--backgroundSec);
+    height: 50px;
+    border-radius: 10px;
+}
+.imgContainer #meme_footer span{
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 .imgContainer img{
     margin: 0 auto;
-    width: 80%;
-    min-width: 70%;
+    max-width: 750px;
+    max-height: 750px;
+    border-radius: 10px;
 }
 .imgContainer h2{
     width: fit-content;
@@ -66,13 +96,7 @@ body{
 .asideInfo{
     background-color: royalblue;
 }
-#meme_footer span{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 18px;
-}
+
 .span-column{
     grid-column: span 2;
 }
@@ -80,16 +104,17 @@ body{
     grid-row: span 2;
 }
 .btn-container{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 50px;
 }
 .btn-container .btn{
-    width: fit-content;
+    width: max-content;
     height: fit-content;
-    padding: 5px 10px;
-    background-color: var(--accentColor);
+    padding: 5px 20px;
+    background-color: var(--accent);
     color: var(--background);
     font-weight: bold;
     font-size: 18px;
@@ -100,20 +125,79 @@ body{
     opacity: .8;
     cursor: pointer;
 }
+.btn-container #randomMemeBtn {
+    position: relative;
+}
+.btn-container #randomMemeBtn .tooltipText{
+    visibility: hidden;
+    width: 120px;
+    font-size: 18px;
+    color: var(--text);
+    background-color: var(--primary);
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 105%;
+}
+.btn-container #saveBtn{
+    background-color: var(--primary);
+}
+
+.btn-container #randomMemeBtn .tooltipText::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -3%;
+    transform: rotate(90deg) translate(-50%);
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary) transparent transparent transparent;
+  }
+
+.btn-container #randomMemeBtn:hover .tooltipText{
+    visibility: visible;
+}
 a{
-    color: var(--fontColor);
+    color: var(--text);
     cursor: pointer;
     transition: .3s ease;
 }
 a:hover{
     color: var(--secAccentColor);
 }
-@media (max-width:450px){
+@media (max-width:700px){
+    body{
+        overflow: hidden;
+    }
     #meme_footer span{
         font-size: 12px;
     }
     svg{
         width: 12px;
         height: 12px;
+    }
+    .imgContainer{
+        width: 350px;
+    }
+    .imgContainer img{
+        max-width: 350px;
+        max-height: 350px;
+    }
+    .imgContainer #meme_footer span{
+        font-size: 16px;
+    }
+}
+@media (min-width:701px) and (max-width:950px){
+    .imgContainer{
+        width: 600px;
+    }
+    .imgContainer img{
+        max-width: 600px;
+        max-height: 600px;
     }
 }
